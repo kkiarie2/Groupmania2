@@ -1,0 +1,29 @@
+@import 'variables';
+
+.navbar{
+    display: flex;
+    justify-content:space-around;
+    height: 100px;
+    align-items: center;
+    width: 100%;
+    right: 0;
+    left: 0;
+    
+
+}
+.navbar--link{
+    display: flex;
+    list-style-type: none;
+    margin: 5px;
+    @include button-bg($color-grey);
+
+    
+    a{
+        text-decoration: none;
+    }
+
+}
+
+.navbar--link3{
+   @include button-bg($color-delete-btn); 
+}

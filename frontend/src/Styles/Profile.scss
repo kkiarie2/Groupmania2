@@ -1,0 +1,15 @@
+@import "variables";
+
+.profile--container{
+    border: 1px solid black;
+    padding:42px 42px;
+}
+
+.btn-edit-pfl{
+    @include button-bg(#2ecc71);
+    
+    }
+
+.btn--delete--pfl{
+    @include button-bg($color-delete-btn); 
+}

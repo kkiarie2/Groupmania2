@@ -1,0 +1,32 @@
+
+
+.welcome--container{
+    
+    display: flex;
+    justify-content: center;
+    padding: 20%;
+    gap: 20%;
+    background-color: #dfdfdf57;
+}
+
+.welcome--div{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.welcome--button{
+    height: 3rem;
+    padding: 5px;
+    color: white;
+    font-weight: 600;
+    
+    
+}
+.welcome--login{
+    background-color:#1D9BF0 ;
+}
+
+.welcome--signup{
+    background-color: #008000;
+}

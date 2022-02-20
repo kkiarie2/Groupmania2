@@ -1,0 +1,78 @@
+/*
+  @mixin btn {
+   color:white;
+   text-decoration:none;
+   padding:5px 10px;
+   border-radius:3px;
+   font-size: 1rem;
+   border: none;
+  }
+    */
+.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 100px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  right: 0;
+  left: 0;
+}
+
+.navbar--link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style-type: none;
+  margin: 5px;
+  background: #E5E5E5;
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+}
+
+.navbar--link:hover {
+  background: #d1d1d1;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.navbar--link:active {
+  background: #a5a5a5;
+}
+
+.navbar--link a {
+  text-decoration: none;
+}
+
+.navbar--link3 {
+  background: #ff0000;
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+}
+
+.navbar--link3:hover {
+  background: #d60000;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.navbar--link3:active {
+  background: maroon;
+}
+/*# sourceMappingURL=Navbar.css.map */
