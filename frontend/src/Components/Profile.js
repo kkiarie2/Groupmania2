@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import '../Styles/css/Profile.css'
 
 
@@ -18,10 +19,12 @@ export default function Profile(){
             </div>
             <div className="edit--div">
 
-
-                    <button className="btn-edit-pfl button--edit btn">Edit Profile</button>
+                    <Link to='/editpfl'>
+                        <button className="btn-edit-pfl button--edit btn">Edit Profile</button> 
+                    </Link>
     
-                <button className="btn--delete--pfl delete--button btn">Delete Profile</button>
+                <button className="btn--delete--pfl delete--button btn" >Delete Profile</button>
+                {/*onClick={deleteProfile}*/}
 
              </div>
             <main className="profile--posts"></main>

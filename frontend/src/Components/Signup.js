@@ -159,8 +159,8 @@ const history = useHistory();
 <div className="alternative--signin">
 
     <p className='alternative--para'> Already have an account? </p>
-    <button className='alternative--button button'>Login
-        <Link to="/login">LOG IN</Link>
+    <button className='alternative--button button'>
+        <Link to="/login">Log In</Link>
     
     </button>
 
