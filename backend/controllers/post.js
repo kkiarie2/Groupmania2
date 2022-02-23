@@ -1,7 +1,4 @@
-
-const fs = require('fs');
-const Post = require('../models/post');
-const PostModel = require('../models/index');
+const {PostModel} = require('../models/index');
 
 
 async function addPost({userId, post, image}){
@@ -16,14 +13,64 @@ async function addPost({userId, post, image}){
   }
 
       catch(error){
+        console.log({error})
        switch(error.name)
               { default:
               return {status:'failed', message:'unexpected error occurred'} 
         }
       }
 }
+//edit posts
+async function editPost(userId, postId, newPost){
+  try{
+      const existingPost = await PostModel.findOne({where: {userId, id:postId}})
+      if(! existingPost ){
+        return {status:'failed', message:'you are not allowed to edit this post'} 
+      } else{
+        
+        const res = await existingPost.update(newPost)
+        return {status:"successful", res}
+      }
 
-module.exports={addPost}
+  } catch(err){
+    console.log({err})
+    return {status:'failed', message:'unexpected error occurred'} 
+  }
+
+}
+
+
+//get posts by user id
+async function getPostsByUserId(userId){
+  try{
+    const res = await PostModel.findAll({where:{userId}})
+    console.log({res, userId})
+    return {status: "Successful", posts:res.map((post)=>({...post.dataValues, content: post.getContent()})) }
+  }catch(err){
+    return {status:'failed', message:'unexpected error occurred'} 
+  }
+}
+
+//get allposts
+async function getAllPosts(){
+  try{
+    const res = await PostModel.findAll({})
+    console.log({res})
+    return {status: "Successful", posts:res.map((post)=>{
+      const thisPost = ({...post.dataValues, ...post.getContent()})
+      delete thisPost.image
+      delete thisPost.post
+      return thisPost
+    })}
+  }catch(err){
+    return {status:'failed', message:'unexpected error occurred'} 
+  }
+}
+
+
+
+
+module.exports={addPost, getPostsByUserId, getAllPosts, editPost}
 
 
 /*

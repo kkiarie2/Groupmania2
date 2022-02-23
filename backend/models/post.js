@@ -25,6 +25,23 @@ const postSchema = ({
   comments:{type: DataTypes.JSON, allowNull:true }
 });
 
-PostModel.init(postSchema, {sequelize:db, modelName:'post'})
+class LikeModel extends Model{
 
-module.exports = PostModel
+}
+class CommentModel extends Model{
+
+}
+
+const  likeSchema = ({
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement:true, allowNull: false },
+})
+const  commentSchema = ({
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement:true, allowNull: false },
+  comment:{type: DataTypes.STRING, allowNull:true }
+})
+
+PostModel.init(postSchema, {sequelize:db, modelName:'post'})
+LikeModel.init(likeSchema, {sequelize:db, modelName:'like'})
+CommentModel.init(commentSchema, {sequelize:db, modelName:'comment'})
+
+module.exports = {PostModel, CommentModel, LikeModel}

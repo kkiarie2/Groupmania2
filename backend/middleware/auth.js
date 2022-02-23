@@ -9,12 +9,14 @@ module.exports = (req, res, next) => {
     //console.log(token)
     
     const decodedToken = jwt.verify(token, process.env.jwtSecret);
-    const userId = decodedToken.userId;
+    
  //   console.log({userId,decodedToken})
   //req.auth = {userId};
     if (req.body.userId && req.body.userId != userId) {
       throw 'Invalid user ID';
     } else {
+      const payload = decodedToken.payload;
+      const userId = payload.userId;
       req.userId = userId
       next();
     }

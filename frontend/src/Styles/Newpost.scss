@@ -17,6 +17,11 @@
     align-items: center;
     justify-content: flex-start;
     padding: 10px;
+
+    @include mobile{
+        flex-direction: column;
+    }
+
 }
 
 .textarea{
@@ -36,4 +41,8 @@
  display: none;
     
 
+}
+
+.image--input--label{
+    font-size: 18px;
 }

@@ -42,6 +42,15 @@
   padding: 10px;
 }
 
+@media (min-width: 320px) {
+  .update--form {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 .textarea {
   width: 70%;
   margin: auto;
@@ -62,5 +71,9 @@
 
 .image--input {
   display: none;
+}
+
+.image--input--label {
+  font-size: 18px;
 }
 /*# sourceMappingURL=Newpost.css.map */

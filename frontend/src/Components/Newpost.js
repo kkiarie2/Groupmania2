@@ -44,19 +44,18 @@
 
 
       return (
-                <Link to="/#">
+                
                    <article className='update'>
-                            <form className='update--form' 
-                            //onSubmit={handleSubmit}
+                            <form className='update--form'  //onSubmit={handleSubmit}
                             >
-                                    <label className='text--input--label'>        
+                                    <label className='text--input--label'> post Something       
                                         <textarea 
                                             className='textarea'
                                             name='postText'
                                            // value={postText}
                                             //onChange={(e) => setPostText(e.target.value)}
                                         ></textarea>
-                                          your post 
+                                          
                                     </label>  
 
                                     
@@ -67,7 +66,7 @@
                                              // value={postImg} 
                                               //onChange={(e) => setPostImg(e.target.value)}
                                           />
-                                            Add Image
+                                            Image
                                     </label>                  
 
                             </form>
@@ -75,7 +74,7 @@
 
 
                     </article>
-                </Link>    
+                
       )
     }
     
