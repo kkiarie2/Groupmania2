@@ -2,8 +2,27 @@
 $color-primary: #1D9BF0;
 $color-delete-btn: #ff0000;
 $color-grey: #E5E5E5;
-
-
+//media queries
+$breakpoints:(
+  "mobile": 320px,
+  "mobile-l": 425px,
+  "tablet": 768px,
+);
+@mixin mobile {
+  @media (min-width: map-get($breakpoints, "mobile")) {
+      @content;
+  }
+}
+@mixin mobile-l {
+  @media (min-width: map-get($breakpoints, "mobile-l")) {
+      @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: map-get($breakpoints, "tablet")) {
+      @content;
+  }
+}
 
 
 
@@ -48,13 +67,22 @@ $color-grey: #E5E5E5;
     margin: 5px;
 }
 
- 
-
-a:hover {
+ a:hover {
   background:darken($color,50%);
   cursor: pointer;
   text-transform: uppercase;
 }
 
 }
+
+
+@mixin profileImages {
+  
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  
+}
+
 

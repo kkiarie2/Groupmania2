@@ -1,4 +1,4 @@
-
+@import 'variables';
 
 .footer--container{
     display: flex;
@@ -11,5 +11,23 @@
     width: 100%;
     color: white;
     font-size: 15px;
+    @include mobile{
+        width: 100%;
+        height: auto;
+        padding: 5px;
+        justify-content: flex-start;
+    }
     
+}
+
+
+.footer--icon{
+
+
+
+    @include mobile{
+          justify-content: flex-start;
+          height: 50px;
+          width: 50%;
+    }
 }

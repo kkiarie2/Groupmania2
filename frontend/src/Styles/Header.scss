@@ -1,14 +1,23 @@
+@import 'variables';
+
 
 .header{
     display: flex;
     align-content: center;
-    padding-left: 20px;
+    padding: 20px 20px;
     background-color: #1D9BF0;
     top: 0;
     left: 0;
     height: 100px;
+    width: 100%;
     color: white;
     font-size: 30px;
+    @include mobile{
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        font-size: 20px;
+    }
 }
 
 
@@ -16,10 +25,19 @@
     height: 40%;
     width: 300px;
     align-self: center;
-    background-color: #1D9BF0;
+
+    @include mobile{
+        height: auto;
+        width: 90%;
+    }
 }
 
 H4{
 margin-left: 20px;
 align-self: center;
+        @include mobile{
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+
 }

@@ -14,6 +14,7 @@ import Footer from './Components/Footer';
 import Profile from './Components/Profile';
 import Navbar from './Components/Navbar';
 import Welcomescreen from './Components/Welcomescreen';
+import Editpfl from './Components/Editpfl';
 
 
 
@@ -103,26 +104,26 @@ function App() {
 return (
     
     <div className="App">
-              
-      
-     
+         
                       
        <Router>
               <Switch>                     
-                      <Route path="/signup"> <Signup /></Route>
+                     <Route path="/signup"> <Signup /></Route>
                       <Route path="/home"> <Home /> </Route>
                       <Route path="/login" > <Login /></Route>
                       <Route path="/profile" > <Profile /></Route>
+                      <Route path="/editpfl" > <Editpfl /></Route>
                       <Route path="/newpost" > <Newpost /> </Route>
                       <Route path="/post" > <Post /> </Route>
                       <Route path="/editpost" > <Editpost /> </Route>
-                      <Route path="/" > <Welcomescreen /> </Route>
+                      <Route path="/" > <Welcomescreen /> </Route> 
+                      
                     
             
               </Switch>
    </Router>  
 
-
+          
     
 
     </div>

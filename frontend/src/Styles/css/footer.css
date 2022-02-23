@@ -1,3 +1,13 @@
+/*
+  @mixin btn {
+   color:white;
+   text-decoration:none;
+   padding:5px 10px;
+   border-radius:3px;
+   font-size: 1rem;
+   border: none;
+  }
+    */
 .footer--container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12,5 +22,26 @@
   width: 100%;
   color: white;
   font-size: 15px;
+}
+
+@media (min-width: 320px) {
+  .footer--container {
+    width: 100%;
+    height: auto;
+    padding: 5px;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+}
+
+@media (min-width: 320px) {
+  .footer--icon {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    height: 50px;
+    width: 50%;
+  }
 }
 /*# sourceMappingURL=footer.css.map */

@@ -1,11 +1,11 @@
-
+import React from 'react'
 
 
 const Editpfl = () =>{
         const [profileData, setProfileData] = React.useState(
             {profileImg: "", firstName: "", birthDay: "", hobbies: ""}
         )
-        
+        /*
         console.log(profileData.comments)
         
         function handlePflChange(event) {
@@ -17,7 +17,7 @@ const Editpfl = () =>{
             })
         }
 
-        function profileSubmit(event){
+     function profileSubmit(event){
             event.preventDefault()
             console.log()
             try {
@@ -29,6 +29,9 @@ const Editpfl = () =>{
                 console.log(`Error: ${err.message}`);
               }
         }
+
+
+        */
 
 
 
@@ -44,7 +47,7 @@ const Editpfl = () =>{
                         name="profileImg"
                         required
                         value={profileData.profileImg}
-                        onChange={handlePflChange}
+                       // onChange={handlePflChange}
                         />
                 </label>
                              
@@ -55,7 +58,7 @@ const Editpfl = () =>{
                             name="firstName"
                             required
                             value={profileData.firstName}
-                            onChange={handlePflChange}
+                         //   onChange={handlePflChange}
                             />
                     </label> 
 
@@ -67,7 +70,7 @@ const Editpfl = () =>{
                             name="birthDay"
                             required
                             value={profileData.birthDay}
-                            onChange={handlePflChange}
+                           // onChange={handlePflChange}
 
                             />
                     </label> 
@@ -79,7 +82,7 @@ const Editpfl = () =>{
                             name="hobbies"
                             required
                             value={profileData.hobbies}
-                            onChange={handlePflChange}
+                           // onChange={handlePflChange}
                             />
                     </label> 
 

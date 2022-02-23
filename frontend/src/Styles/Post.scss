@@ -1,0 +1,116 @@
+@import 'variables';
+
+.publisher--image{
+    
+        @include profileImages;
+    
+}
+.post--link{
+    text-decoration: none;
+
+    &:visited{
+        color: black;
+    }
+}
+.post--div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid grey;
+    box-shadow: 11px 16px 22px 0px rgba(0,0,0,0.75);
+
+  
+    @include mobile{
+        width: 90%;
+        flex-direction: column;
+    }
+
+    @include mobile-l{
+        
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.post-text-div{
+    max-width: 600px;
+    display: flex;
+    justify-self: center;
+
+    @include mobile{
+        width: 95%;
+        flex-direction: column;
+    }
+}
+
+.post-size{
+    
+    max-width: 600px;
+    font-size: 2rem;
+
+    img{
+        max-width: 400px;
+        max-height: 350px;
+        
+    }
+
+    @include mobile{
+        width: 100%;
+        flex-direction: column;
+        font-size: 1rem;
+        
+    }
+}
+.liked--div{
+    color: #1D9BF0;
+}
+
+
+.icons--div{
+    display: flex;
+    justify-content: center;
+    padding-left: 20px;
+}
+
+.icons {
+    display: flex;
+    padding-right: 20px;
+    width: 20%;
+    align-items: center;
+    color: #1D9BF0 ;
+    font-weight: 700;
+    font-size: large;
+
+    @include mobile{
+        padding-right: 10px;
+        color: #161515 ;
+        
+    }
+}
+
+.icons--likes{
+    @include mobile{
+        
+        font-weight: 700;
+        font-size: 30px;
+    }
+}
+
+.button--edit{
+    @include button-bg($color-primary);
+    margin-right: 20px;
+}
+
+.delete--post{
+    @include button-bg($color-delete-btn); 
+    margin-right: 20px;
+    
+    @include mobile{
+        font-size: 18px;
+    }
+}
+

@@ -1,15 +1,15 @@
-    import { React, useState} from 'react'
-import { useFieldArray } from 'react-hook-form'
-    import { Link } from 'react-router-dom'
+    import "../Styles/css/Newpost.css";
+    import { React, useState} from 'react';
+    import { Link } from 'react-router-dom';
     
 
 
 
 
     export default function newPost() {
-      const [postText, setPostText] = useState('')
+    /*   const [postText, setPostText] = useState('')
       const [postImg, setPostImg] = useState('')
-      /*
+     
       
 
 
@@ -46,13 +46,15 @@ import { useFieldArray } from 'react-hook-form'
       return (
                 <Link to="/#">
                    <article className='update'>
-                            <form className='update--form' onSubmit={handleSubmit}>
+                            <form className='update--form' 
+                            //onSubmit={handleSubmit}
+                            >
                                     <label className='text--input--label'>        
                                         <textarea 
                                             className='textarea'
                                             name='postText'
-                                            value={postText}
-                                            onChange={(e) => setPostText(e.target.value)}
+                                           // value={postText}
+                                            //onChange={(e) => setPostText(e.target.value)}
                                         ></textarea>
                                           your post 
                                     </label>  
@@ -62,8 +64,8 @@ import { useFieldArray } from 'react-hook-form'
                                           <input type="file" 
                                               name="file" 
                                               className='image--input' 
-                                              value={postImg} 
-                                              onChange={(e) => setPostImg(e.target.value)}
+                                             // value={postImg} 
+                                              //onChange={(e) => setPostImg(e.target.value)}
                                           />
                                             Add Image
                                     </label>                  

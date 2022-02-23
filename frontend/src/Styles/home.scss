@@ -1,70 +1,46 @@
 @import 'variables';
 
 .home--container{
-    width: 100%;
+    max-width: 800px;
     display: flex; 
     flex-direction: column;
     justify-content: center;
     padding: 0 2%;
+    margin: 0 auto;
    // background-image: url('/public/icon.png');
    // background-repeat: repeat-y;
    // background-size: 30%;
    // background-position: center;
+        @include mobile{
+            width: 100%;
+            padding: 0 1%;
+        }
 
   }
 
 .main{
 
     height: 100vh;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
     align-self: center;
-    max-width: 700px;
     background-color: #DFDFDF;
     padding: 20px;
     opacity: 0.8;
+        @include mobile{
+            width: 100%;
+            flex-flow: wrap;
+            padding: 0;
+        }
    
 }
 
 .profile--image{
-    width: 150px;
-    height: 120px;
+    @include profileImages;
 }
 
-.update{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-.update--form{
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 10px;
-}
-
-.textarea{
-    width: 70%;
-    margin: auto;
-}
-
-.image--input--label{
-    display:flex;
-    justify-content: center;
-    width: 20%;
-    background-color: #1D9BF0;
-    cursor: pointer;
-    color: white;
-}
-.image--input{
- display: none;
-    
-
-}
 
 .post--button{
     width: 30%;
@@ -78,50 +54,26 @@
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid grey;
+    @include mobile{
+        
+        flex-direction: column;
+    }
 }
 
-.post--div{
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    
 
-}
-
-.post-text-div{
-    max-width: 600px;
-}
 
 .publisher--image{
 width: 50px;
 height: 50px;
 }
 
-.icons--div{
-    max-width: 600px;
-    display: flex;
-    justify-content: center;
-    padding-left: 20px;
+.post--wrap{
+    @include mobile{
+        display: flex;
+        width: 95%;
+    }
 }
 
-.icons {
-    display: flex;
-    padding-right: 20px;
-    width: 20%;
-    align-items: center;
-    color: #1D9BF0 ;
-    font-weight: 700;
-    font-size: large;
-}
 
-.button--edit{
-    @include button-bg($color-primary);
-    margin-right: 20px;
-}
-
-.delete--post{
-    @include button-bg($color-delete-btn); 
-    margin-right: 20px;
-}
 
 

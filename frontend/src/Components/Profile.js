@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
 import '../Styles/css/Profile.css'
+import Header from './Header'
 
 
 export default function Profile(){
     return(
         < div className='profile--container'>
+            <Header />
             <div className="profile--imgdiv">
                         
             <img className="profile--image" src= 'picture.png'/>

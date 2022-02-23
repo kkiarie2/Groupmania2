@@ -9,7 +9,7 @@
   }
     */
 .home--container {
-  width: 100%;
+  max-width: 800px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,10 +21,19 @@
       -ms-flex-pack: center;
           justify-content: center;
   padding: 0 2%;
+  margin: 0 auto;
+}
+
+@media (min-width: 320px) {
+  .home--container {
+    width: 100%;
+    padding: 0 1%;
+  }
 }
 
 .main {
   height: 100vh;
+  max-width: 800px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -34,71 +43,26 @@
           flex-direction: column;
   -ms-flex-item-align: center;
       align-self: center;
-  max-width: 700px;
   background-color: #DFDFDF;
   padding: 20px;
   opacity: 0.8;
 }
 
+@media (min-width: 320px) {
+  .main {
+    width: 100%;
+    -ms-flex-flow: wrap;
+        flex-flow: wrap;
+    padding: 0;
+  }
+}
+
 .profile--image {
-  width: 150px;
-  height: 120px;
-}
-
-.update {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.update--form {
-  width: 90%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  padding: 10px;
-}
-
-.textarea {
-  width: 70%;
-  margin: auto;
-}
-
-.image--input--label {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 20%;
-  background-color: #1D9BF0;
-  cursor: pointer;
-  color: white;
-}
-
-.image--input {
-  display: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .post--button {
@@ -120,18 +84,13 @@
   border-bottom: 1px solid grey;
 }
 
-.post--div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 20px;
-}
-
-.post-text-div {
-  max-width: 600px;
+@media (min-width: 320px) {
+  .all-posts {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 .publisher--image {
@@ -139,74 +98,12 @@
   height: 50px;
 }
 
-.icons--div {
-  max-width: 600px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding-left: 20px;
-}
-
-.icons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding-right: 20px;
-  width: 20%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: #1D9BF0;
-  font-weight: 700;
-  font-size: large;
-}
-
-.button--edit {
-  background: #1D9BF0;
-  color: white;
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 3px;
-  font-size: 1rem;
-  font-weight: 700;
-  border: none;
-  margin-right: 20px;
-}
-
-.button--edit:hover {
-  background: #0e86d6;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-}
-
-.button--edit:active {
-  background: #095385;
-}
-
-.delete--post {
-  background: #ff0000;
-  color: white;
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 3px;
-  font-size: 1rem;
-  font-weight: 700;
-  border: none;
-  margin-right: 20px;
-}
-
-.delete--post:hover {
-  background: #d60000;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-}
-
-.delete--post:active {
-  background: maroon;
+@media (min-width: 320px) {
+  .post--wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 95%;
+  }
 }
 /*# sourceMappingURL=home.css.map */
