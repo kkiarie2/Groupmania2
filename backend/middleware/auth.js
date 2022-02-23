@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
-//const { router, response } = require('../app');
-const user = require('../models/user');
+const {getUser} = require('../controllers/user')
 
 module.exports = (req, res, next) => {
 //console.log({body:req.body, headers:req.headers})
@@ -17,8 +16,15 @@ module.exports = (req, res, next) => {
     } else {
       const payload = decodedToken.payload;
       const userId = payload.userId;
-      req.userId = userId
-      next();
+      const user = getUser(userId)
+      if(user.status === "successful"){
+        console.log({user})
+        req.userId = userId
+        next();
+      } else{
+        throw 'Invalid user ID';
+      }
+      
     }
   } catch(err) {
     res.status(401).json({

@@ -7,64 +7,47 @@
 
 
     export default function newPost() {
-    /*   const [postText, setPostText] = useState('')
-      const [postImg, setPostImg] = useState('')
-     
-      
-
-
-                  const handleSubmit = async (e) => {
-                          e.preventDefault();
-                          const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
-                          const datetime = format(new Date(), 'MMMM dd, yyyy pp');
-                          const newPost = { id, datetime, text: postText, img: PostImg };
-                                try {
-                                  const response = await api.post('/posts', newPost);
-                                  const allPosts = [...posts, response.data];
-                                  setPosts(allPosts);
-                                  setPostImg('');
-                                  setPostText('');
-                                  history.push('/home');
-                                } catch (err) {
-                                  console.log(`Error: ${err.message}`);
-                          }
-            }
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      */
 
 
 
-      return (
+
+      const handleSubmit = async (e) => {
+        console.log(e.target)
+        e.preventDefault();
+        //const newPost = { id, datetime, body: postText };
+        try {
+      //    const response = await api.post('http://localhost:4000/api/posts/addpost', newPost);
+      //    const allPosts = [...posts, response.data];
+          
+        } catch (err) {
+          console.log(`Error: ${err.message}`);
+        }
+      }
+
+
+
+   
+          return (
                 
                    <article className='update'>
-                            <form className='update--form'  //onSubmit={handleSubmit}
+                            <form className='update--form'  onSubmit={handleSubmit}
                             >
                                     <label className='text--input--label'> post Something       
                                         <textarea 
                                             className='textarea'
                                             name='postText'
                                            // value={postText}
-                                            //onChange={(e) => setPostText(e.target.value)}
+                                          //  onChange={(e) => setPostText(e.target.value)}
                                         ></textarea>
                                           
                                     </label>  
 
-                                    
                                     <label className='image--input--label'>
                                           <input type="file" 
                                               name="file" 
                                               className='image--input' 
                                              // value={postImg} 
-                                              //onChange={(e) => setPostImg(e.target.value)}
+                                            //  onChange={(e) => setPostImg(e.target.value)}
                                           />
                                             Image
                                     </label>                  

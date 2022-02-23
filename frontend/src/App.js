@@ -1,6 +1,6 @@
 
 import './Styles/css/App.css';
-import {React, useState} from 'react';
+import {React, useState, useEffect} from 'react';
 import {  BrowserRouter as Router,  Switch, Route, Link, useHistory } from "react-router-dom";
 import Signup from './Components/Signup';
 import './Styles/css/signup.css'
@@ -15,6 +15,7 @@ import Profile from './Components/Profile';
 import Navbar from './Components/Navbar';
 import Welcomescreen from './Components/Welcomescreen';
 import Editpfl from './Components/Editpfl';
+import {apiRoute} from './api.js'
 
 
 
@@ -29,13 +30,15 @@ function App() {
   const [editImg, setEditImg] = useState('');
   const history = useHistory();
 
-/*
+
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await api.get('http://localhost:4000/api/posts');
-        setPosts(response.data);
+        const response = await fetch(apiRoute + '/posts');
+        const data = await response.json()
+        setPosts(data);
+        
       } catch (err) {
                      console.log(err);     
       }
@@ -44,30 +47,9 @@ function App() {
     fetchPosts();
   }, [])
 
-  useEffect(() => {
-    const filteredResults = posts.filter((post) =>
-      ((post.body).toLowerCase()).includes(search.toLowerCase())
-      || ((post.title).toLowerCase()).includes(search.toLowerCase()));
 
-    setSearchResults(filteredResults.reverse());
-  }, [posts, search])
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
-    const datetime = format(new Date(), 'MMMM dd, yyyy pp');
-    const newPost = { id, title: postTitle, datetime, body: postText };
-    try {
-      const response = await api.post('http://localhost:4000/api/posts/addpost', newPost);
-      const allPosts = [...posts, response.data];
-      setPosts(allPosts);
-      setPostText('');
-      setPostImg('');
-      history.push('/home');
-    } catch (err) {
-      console.log(`Error: ${err.message}`);
-    }
-  }
+ 
+  /*
 
   const handleEdit = async (id) => {
     const datetime = format(new Date(), 'MMMM dd, yyyy pp');

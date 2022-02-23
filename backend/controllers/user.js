@@ -25,6 +25,34 @@ async function signup(email, password){
 }
 
 
+async function deleteAccount( userId){
+  try{
+    const existingUser = await UserModel.findOne({id:userId})
+    if(!existingUser){
+      return {status:'failed', message:'user does not exist'} 
+    } else{
+        const res = await existingUser.destroy()
+        return { status: "successful", res}
+    }
+
+  } catch(err){
+    return {status:'failed', message:'unexpected error occurred'}
+  }
+}
+
+
+async function getUser (userId){
+  try{
+    const user = await UserModel.findOne({id:userId}, {attributes:{include:["id", "email"]}})
+    if(user) return { status: "successful", user};
+    return {status:'failed', message:'user does not exist'} 
+      
+
+  }catch(err){
+    return {status:'failed', message:'unexpected error occurred'}
+  }
+}
+
 
 
 
@@ -70,7 +98,7 @@ async function login(email, password){
 
 
 
-module.exports ={signup, login}
+module.exports ={signup, login, deleteAccount, getUser}
 
 
 

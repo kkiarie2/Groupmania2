@@ -17,6 +17,12 @@ router.post('/login', async(req, res)=> {
     const user = await userCtrl.login(req.body.email, req.body.password)
     res.json(user)
 });
+
+
+router.get('/deleteaccount', async(req, res) => {
+    const account = await userCtrl.deleteAccount(req.userId)
+    res.json(account)
+})
 /*
 //router.post('/login', userCtrl.login);
 //find  a user
