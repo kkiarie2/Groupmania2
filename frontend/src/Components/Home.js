@@ -5,7 +5,9 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import Header from './Header';
 import Post from './Post'
+import Newpost from './Newpost'
 import { AiFillLike, AiOutlineComment, AiOutlineLogout } from 'react-icons/ai';
+import newPost from './Newpost';
 
 
 
@@ -44,17 +46,15 @@ export default function Home(){
         <Header />
 
                 <main className='main'>
-                    <section className='post-text-div'>
-                
-                        <div className='profile--imgdiv'>
-                            <img src='picture.png'  className='profile--image'/>
-                        </div> 
-                            <Link to="/newpost"><button className='btn btn--post'>Post Something</button></Link>
-                    </section>
+                      <Newpost />
                      
                     <div className="all-posts">     
                     
                             
+                                     <Post />
+                                     <Post />
+                                     <Post />
+                                     <Post />
                                      <Post />
                                 
                                 

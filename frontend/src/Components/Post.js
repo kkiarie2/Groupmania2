@@ -25,10 +25,14 @@ import {format} from 'timeago.js'
                <> 
                   
              <div className='post--div'>
-                    <div className='publisher-div'>
-                            <img src='picture.png' /* src="/#" */   className='publisher--image'/>
-                            <span className='timestamp'>just now</span>
-                            <span className='username'>my name</span>
+                    <div className='publisher-container'>
+                            <div className='publisher--div'>
+                                <img src='picture.png' /* src="/#" */   className='publisher--image'/>
+                            </div>
+                            <div className='username--container'>
+                                <div className='username--div'><span className='username--span'><h4 className='name--h4'>my name</h4></span> </div>
+                                <div className='time--div'><span className='timestamp'>just now</span> </div>
+                            </div>
                     </div>
                     <div className='post-text-div'>
                         <Link to="/post" className='post--link'>

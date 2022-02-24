@@ -21,9 +21,19 @@
     a{
         text-decoration: none;
     }
+    @include mobile{
+        padding:3px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
 
 }
 
 .navbar--link3{
    @include button-bg($color-delete-btn); 
+   @include mobile{
+    padding:3px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    }
 }

@@ -14,30 +14,25 @@
     font-size: 30px;
     @include mobile{
         flex-direction: column;
+        align-items: start;
         width: 100%;
-        height: auto;
+        height: 120px;
         font-size: 20px;
+        padding: 5px;
     }
 }
 
 
 .header--icon{
+    display: flex;
     height: 40%;
-    width: 300px;
-    align-self: center;
+    max-width: 300px;
+    align-self: flex-start;
 
     @include mobile{
-        height: auto;
-        width: 90%;
+        height: 60px;
+        width: 50%;
     }
 }
 
-H4{
-margin-left: 20px;
-align-self: center;
-        @include mobile{
-            margin-block-start: 0;
-            margin-block-end: 0;
-        }
 
-}

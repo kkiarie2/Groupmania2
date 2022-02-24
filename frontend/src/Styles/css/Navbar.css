@@ -54,6 +54,14 @@
   text-decoration: none;
 }
 
+@media (min-width: 320px) {
+  .navbar--link {
+    padding: 3px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+}
+
 .navbar--link3 {
   background: #ff0000;
   color: white;
@@ -74,5 +82,13 @@
 
 .navbar--link3:active {
   background: maroon;
+}
+
+@media (min-width: 320px) {
+  .navbar--link3 {
+    padding: 3px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
 }
 /*# sourceMappingURL=Navbar.css.map */

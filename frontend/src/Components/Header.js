@@ -4,11 +4,12 @@ import Navbar from './Navbar'
 export default function Header(){
     return(
         <header className="header">
-        
-         
-        <img src='icon-left-font.png' className='header--icon'/>
 
-        <h4> Hangouts</h4>
+        <div className='profile--imgdiv'>
+            <img src='icon-left-font-monochrome-black.svg' className='header--icon'/>
+            <img src='picture.png'  className='header--image'/>
+                
+        </div> 
 
         <Navbar />
   

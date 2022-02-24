@@ -87,10 +87,10 @@ export default function Login(){
     <div className='alternative--signin'>
 
         <p className='alternative--para'>Don't have an account?</p>
-        <button className='alternative--button button'>
-            <Link to="/signup">CREATE ACCOUNT</Link>
         
-        </button>
+            <Link to="/signup"><button className='alternative--button button'>Signup </button></Link>
+        
+        
 
 </div>
 

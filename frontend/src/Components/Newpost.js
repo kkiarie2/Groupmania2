@@ -1,6 +1,7 @@
     import "../Styles/css/Newpost.css";
     import { React, useState} from 'react';
     import { Link } from 'react-router-dom';
+    import {BiImageAdd} from "react-icons/bi"
     
 
 
@@ -29,34 +30,38 @@
    
           return (
                 
-                   <article className='update'>
-                            <form className='update--form'  onSubmit={handleSubmit}
-                            >
-                                    <label className='text--input--label'> post Something       
-                                        <textarea 
-                                            className='textarea'
-                                            name='postText'
-                                           // value={postText}
-                                          //  onChange={(e) => setPostText(e.target.value)}
-                                        ></textarea>
-                                          
-                                    </label>  
+                   <section className='update'>
+                            <form className='update--form'  onSubmit={handleSubmit}>
+                                  <div className="inputs-wrap">
+                                      <label for="postinput" className='text--input--label'> </label>       
+                                            <textarea 
+                                                className='textarea'
+                                                name='postText'
+                                                placeholder="share"
+                                                rows="3"
+                                                id="postinput"
+                                              // value={postText}
+                                              //  onChange={(e) => setPostText(e.target.value)}
+                                            />
+                                              
+                                        
 
-                                    <label className='image--input--label'>
-                                          <input type="file" 
-                                              name="file" 
-                                              className='image--input' 
-                                             // value={postImg} 
-                                            //  onChange={(e) => setPostImg(e.target.value)}
-                                          />
-                                            Image
-                                    </label>                  
+                                        <label className='image--input--label'> <BiImageAdd />
+                                              <input type="file" 
+                                                  name="file" 
+                                                  className='image--input' 
+                                                // value={postImg} 
+                                                //  onChange={(e) => setPostImg(e.target.value)}
+                                              />
+                                        </label> 
+                                  </div>   
+                                    <button className='post--button' type='submit'> Post</button>               
 
                             </form>
-                            <button className='post--button' type='submit'> Post</button>
+                            
+                                  <hr />
 
-
-                    </article>
+                    </section>
                 
       )
     }
