@@ -64,6 +64,7 @@ async function getPostsByUserId(userId, currentUserId){
   }catch(err){
     return {status:'failed', message:'unexpected error occurred'} 
   }
+}
 
 
 
@@ -123,8 +124,3 @@ async function getAllPosts(currentUserId){
 
 
 module.exports={addPost, getPostsByUserId, getAllPosts, editPost, getPostByPostId}
-
-
-
-
-
