@@ -1,25 +1,23 @@
 import '../Styles/css/Post.css'
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { AiFillLike, AiOutlineComment, AiOutlineLogout } from 'react-icons/ai';
 import {format} from 'timeago.js'
 import {imageRoute} from '../api.js'
 
 
+const Image = ({imageUrl, className}) => {
+    return( <img className={className} src={`${imageRoute}/${imageUrl}`}/>)
+}
 
-
-const Post = ({story, typeOfStory}) => {
+const Post = ({story, typeOfStory, authorinfo, postId}) => {
   const [like, setLike] = useState(0)
   const [isLiked, setIsLiked] = useState(false)
   const [color, setColor] = useState()
-
-
-
-
-
-
-
-
+  //console.log(authorinfo)
+const user = (userId) => {
+    
+}
 
   const handleLike =() =>{
       setLike(isLiked ? like-1 : like+1 ) 
@@ -31,18 +29,17 @@ const Post = ({story, typeOfStory}) => {
   }
 
   const paragraph= (text) =>{
-      return(<p>{text}</p>       )
+      return(<p className='post--paragraph'>{text}</p>       )
   }
-  const image = (imageUrl) => {
-      return( <img src={`${imageRoute}/${imageUrl}`}/>)
-  }
+ 
     return (
                <> 
                   
              <div className='post--div'>
                     <div className='publisher-container'>
                             <div className='publisher--div'>
-                                <img src='picture.png' /* src="/#" */   className='publisher--image'/>
+                                {/*<img src='picture.png'  className='publisher--image'/> */}
+                                {<Image className='publisher--image' imageUrl={`${authorinfo.image}`}/>}
                             </div>
                             <div className='username--container'>
                                 <div className='username--div'><span className='username--span'><h4 className='name--h4'>my name</h4></span> </div>
@@ -50,20 +47,13 @@ const Post = ({story, typeOfStory}) => {
                             </div>
                     </div>
                     <div className='post-text-div'>
-                        <Link to="/post" className='post--link'>
+                        <Link to={`/post/${postId}`} className='post--link'>
                             <div className='post-size'>
+                                  {/*(story).length <= 25 ? story : `${(story).slice(0, 25)}...`*/}
                                 
-                                
-                                <p> 
-                                    
-                                        {/*(story).length <= 25 ? story : `${(story).slice(0, 25)}...`*/}
-                                    
-                                
-                                </p>
-
                                 {typeOfStory === 'post' ? paragraph(story[0]) : null }
-                                {typeOfStory === 'image' ? image(story[0]) : null }
-                                {typeOfStory === 'article' ? <React.Fragment ><div>{paragraph(story[0])} </div><div>{image(story[1])}</div></React.Fragment> : null }
+                                {typeOfStory === 'image' ? <Image imageUrl={story[0]}/> : null }
+                                {typeOfStory === 'article' ? <React.Fragment ><div className='story-div'>{paragraph(story[0])} </div><div className='story-image-div'>{<Image imageUrl={story[1]}/>}</div></React.Fragment> : null }
                     
                                         
                             

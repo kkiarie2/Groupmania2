@@ -20,8 +20,58 @@ return token
 
 
 
+const fetchProfile = async (token) => {
+  // console.log(token)
+   try {
+     const response = await fetch(apiRoute + '/auth/myprofile', {
+       method: "GET", 
+       headers:{
+       'Accept': '*/*',
+       'Authorization': `Bearer ${token}`, 
+       }
+     });
+     const data = await response.json()
+     return(data.user)
+     //console.log(data.user)
+     
+   } catch (err) {
+                  console.log(err); 
+          return (false)
+   }
+ }
 
-export {apiRoute, imageRoute, checkSession};
+ const fetchPost = async (token, postId) => {
+  // console.log(token)
+   try {
+     const response = await fetch(apiRoute + '/posts/' + postId, {
+       method: "GET", 
+       headers:{
+       'Accept': '*/*',
+       'Authorization': `Bearer ${token}`, 
+       }
+     });
+     const data = await response.json()
+          if(data?.post.id){
+            return data.post
+          }else{
+            return false
+          }
+    
+     //console.log(data.user)
+     
+   } catch (err) {
+                  console.log(err); 
+          return (false)
+   }
+ }
+
+
+
+
+
+
+
+export {apiRoute, imageRoute, checkSession, fetchProfile, fetchPost};
 
 
 

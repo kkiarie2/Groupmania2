@@ -27,7 +27,8 @@ async function signup(email, password){
 
 async function deleteAccount( userId){
   try{
-    const existingUser = await UserModel.findOne({id:userId})
+    if(!userId) return {status:'failed', message:'user does not exist'} 
+    const existingUser = await UserModel.findOne({where:{id:userId}})
     if(!existingUser){
       return {status:'failed', message:'user does not exist'} 
     } else{
@@ -36,7 +37,9 @@ async function deleteAccount( userId){
     }
 
   } catch(err){
+    ////console.log({err})
     return {status:'failed', message:'unexpected error occurred'}
+
   }
 }
 
@@ -101,13 +104,13 @@ async function editUser(userId, newProfile){
       } else{
         
         const res = await existingUser.update(newProfile)
-        console.log(Object.keys(res))
+        ////console.log(Object.keys(res))
         delete res.dataValues.password
         return {status:"successful", res}
       }
 
   } catch(err){
-    console.log({err})
+    ////console.log({err})
     return {status:'failed', message:'unexpected error occurred'} 
   }
 
@@ -164,7 +167,7 @@ exports.signup = async (req, res, next) => {
           password: hash
         });
         
-        //console.log(hash);
+        //////console.log(hash);
         user.save().then(
           () => {
             res.status(201).json({

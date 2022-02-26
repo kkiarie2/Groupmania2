@@ -1,7 +1,8 @@
 import React from "react"
 import  '../Styles/css/Login.css';
 import { useForm} from "react-hook-form"
-import { Link, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
+import {checkSession} from '../api'
 
 
 export default function Login(){
@@ -49,6 +50,8 @@ export default function Login(){
     }
 
 
+
+    if(!checkSession()){
 
    
    
@@ -99,5 +102,7 @@ export default function Login(){
 
 
     </div> 
-    )
+    )} else{
+        return <Redirect from="/login" to="/home" />
+    }
 }

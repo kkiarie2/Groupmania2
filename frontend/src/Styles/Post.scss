@@ -1,18 +1,12 @@
 @import 'variables';
 
 
-.post--link{
-    text-decoration: none;
 
-    &:visited{
-        color: black;
-    }
-}
 
 
 .post--div{
     display: flex;
-    max-width: 700px;
+    width: 100%;
     align-items: center;
     justify-content: center;
     justify-self: center;
@@ -36,10 +30,20 @@
     }
 }
 
+.post--link{
+    text-decoration: none;
+    padding-bottom: 10px;
+
+    &:visited{
+        color: black;
+    }
+}
+
 .post-text-div{
     max-width: 600px;
     display: flex;
     justify-self: center;
+    width: 80%;
 
     @include mobile{
         width: 95%;
@@ -73,6 +77,7 @@
     display: flex;
     flex-direction: column;
     padding-left: 10px;
+    width: 20%;
 
     @include tablet{
         flex-direction: column; 
@@ -120,6 +125,23 @@ h4{
         margin-left: 0;
     }
     
+}
+
+
+.story-div{
+    width: 95%;
+}
+.story-image-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+
+    img{
+        width: 100%;
+    }
 }
 
     
@@ -182,4 +204,8 @@ h4{
     
     @include profileImages;
 
+}
+
+.post--paragraph {
+    font: 500 1.2rem Roboto;
 }

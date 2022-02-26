@@ -82,4 +82,8 @@
 .btn--delete--pfl:active {
   background: maroon;
 }
+
+.Profile--info-tags {
+  font-weight: 700;
+}
 /*# sourceMappingURL=Profile.css.map */

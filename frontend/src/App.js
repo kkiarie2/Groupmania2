@@ -1,7 +1,7 @@
 
 import './Styles/css/App.css';
 import {React, useState, useEffect} from 'react';
-import {  BrowserRouter as Router,  Switch, Route, Link, useHistory } from "react-router-dom";
+import {  BrowserRouter as Router,  Switch, Route, Link, useHistory, useParams } from "react-router-dom";
 import Signup from './Components/Signup';
 import './Styles/css/signup.css'
 import Login from './Components/Login'
@@ -16,6 +16,7 @@ import Navbar from './Components/Navbar';
 import Welcomescreen from './Components/Welcomescreen';
 import Editpfl from './Components/Editpfl';
 import {apiRoute} from './api.js'
+import Singlepost from './Components/Singlepost';
 
 
 
@@ -81,7 +82,7 @@ return (
                       <Route path="/profile" > <Profile /></Route>
                       <Route path="/editpfl" > <Editpfl /></Route>
                       <Route path="/newpost" > <Newpost /> </Route>
-                      <Route path="/post" > <Post /> </Route>
+                      <Route path="/post/:postId" > <Singlepost /> </Route>
                       <Route path="/editpost" > <Editpost /> </Route>
                       <Route path="/" > <Welcomescreen /> </Route> 
                       

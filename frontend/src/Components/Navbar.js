@@ -14,7 +14,7 @@ export default function Navbar(){
     return(
         <nav className="navbar">
             
-                <button className="navbar--link "><Link to="signup">Home </Link> </button>
+                <button className="navbar--link "><Link to="/home">Home </Link> </button>
                 <button className="navbar--link "> <Link to="profile">profile </Link></button>
                  <button  className="navbar--link3 " onClick={logout}>Log Out </button>
             

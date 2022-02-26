@@ -2,57 +2,46 @@ import { Link, Redirect } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import '../Styles/css/Profile.css'
 import Header from './Header'
-import {checkSession, imageRoute, apiRoute} from '../api'
+import {checkSession, imageRoute, apiRoute, fetchProfile} from '../api'
 
  
 export default function Profile(){
     const [myProfile, setMyProfile] = useState({})
     
-    
-    const fetchProfile = async (token) => {
-        console.log(token)
-        try {
-          const response = await fetch(apiRoute + '/auth/myprofile', {
-            method: "GET", 
-            headers:{
-            'Accept': '*/*',
-            'Authorization': `Bearer ${token}`, 
-            }
-          });
-          const data = await response.json()
-          setMyProfile(data.user)
-          console.log(data.user)
-          
-          
-        } catch (err) {
-                       console.log(err);     
-        }
-      }
-    
-        useEffect(() => {
+        useEffect(async () => {
          
-        
-          fetchProfile(checkSession());
+          const profile = await fetchProfile(checkSession());
+          if(profile)setMyProfile(profile)
         }, [])
 
 
 
     
     if (checkSession()){  
+      console.log(myProfile)
     
     return( 
         <div className='profile--container'>
-            <Header />
-            <div className="profile--imgdiv">
-            <div className="profile--dept"><img className="profile--image" src={`${imageRoute}/${myProfile.image}`}/></div>          
+            <Header src={`${imageRoute}/${myProfile.image}`} />
+              <div className="profile--imgdiv">
+              <div className="profile--dept"><img className="profile--image" src={`${imageRoute}/${myProfile.image}`}/></div>          
             
-        
+      
 
             </div>
             <div className="profile--info">
-                <p className="profile--name">{myProfile.firstname}</p>
-                <p className="profile--dept">{myProfile.birthDay}</p>
-                <p className="profile--dept">{myProfile.hobbies}</p>
+                <p className="profile--name">
+                  <span className='Profile--info-tags'>First Name: </span>
+                      {myProfile.firstname}
+                </p>
+                <p className="profile--dept">
+                  <span className='Profile--info-tags'>Birth Day: </span>
+                      {myProfile.birthday}
+                </p>
+                <p className="profile--dept">
+                  <span className='Profile--info-tags'>Hobbies: </span>
+                      {myProfile.hobbies}
+                </p>
                 
             
             
@@ -73,7 +62,7 @@ export default function Profile(){
         </div>
 
     )} else{
-        return <Redirect from="/home" to="/login" />
+        return <Redirect from="/profile" to="/login" />
      }
 }
 

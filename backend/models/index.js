@@ -6,12 +6,12 @@ const { PostModel, CommentModel, LikeModel } = require('./post')
 
 
 async function  buildRelationships(){
-UserModel.hasMany(PostModel, {foreignKey:'userId'})
+UserModel.hasMany(PostModel, {foreignKey:'userId', onDelete: 'CASCADE'})
 PostModel.hasMany(LikeModel, {foreigKeny:'postId'})
 PostModel.hasMany(CommentModel, {foreignKey:'postId'})
 UserModel.hasMany(LikeModel, {foreignKey:'userId'})
 UserModel.hasMany(CommentModel, {foreignKey:'userId'}) 
-PostModel.belongsTo(UserModel, {foreignKey:'userId'})
+PostModel.belongsTo(UserModel, {foreignKey:'userId', onDelete: 'CASCADE'})
 LikeModel.belongsTo(UserModel, {foreignKey:'userId'})
 CommentModel.belongsTo(UserModel, {foreignKey:'userId'})
 LikeModel.belongsTo(UserModel, {foreignKey:'postId'})

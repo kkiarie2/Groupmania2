@@ -4,7 +4,7 @@ const {getUser} = require('../controllers/user')
 module.exports = async (req, res, next) => {
 //console.log({body:req.body, headers:req.headers})
   try {
-    const token = req.headers.authorization.split(' ')[1];
+    const token = req.headers?.authorization?.split(' ')[1];
     //console.log(token)
     
     const decodedToken = jwt.verify(token, process.env.jwtSecret);
@@ -28,7 +28,9 @@ module.exports = async (req, res, next) => {
       
     }
   } catch(err) {
+    console.log({err})
     res.status(401).json({
+
       error: new Error('Invalid request!')
     });
   }

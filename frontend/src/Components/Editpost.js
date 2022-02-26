@@ -11,19 +11,11 @@ import { Link } from 'react-router-dom'
 export default function Editpost() {
 
 
-    
-
-
     function handleEdit(e){
         e.preventDefault();
         const editFormData = new FormData(e.target)
         const content = Object.fromEntries(editFormData.entries);
-        
-            
-            
-          
-
-
+    
 
     }
 

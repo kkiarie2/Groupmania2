@@ -26,6 +26,13 @@ app.use((req, res, next) => {
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/posts', postRoutes);
 app.use('/api/auth', userRoutes);
+app.use((req, res, next) => {
+  if(req.url.includes("/images/")){
+    res.sendFile(path.join(__dirname, "images/picture.png"))
+  }
+  console.log(req.url)
+  next()
+})
 
 
 module.exports = app;

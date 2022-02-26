@@ -22,11 +22,11 @@
 
 
       const handleSubmit = async (event) => {
-        console.log({event})
+       // console.log({event})
         event.preventDefault()
         const formData = new FormData(event.target)
         const content = Object.fromEntries(formData);
-        console.log({content})
+       // console.log({content})
 
 
 

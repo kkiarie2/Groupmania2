@@ -8,7 +8,7 @@ import Post from './Post'
 import Newpost from './Newpost'
 import { AiFillLike, AiOutlineComment, AiOutlineLogout } from 'react-icons/ai';
 import newPost from './Newpost';
-import {apiRoute, checkSession} from '../api.js'
+import {apiRoute, checkSession, fetchProfile, imageRoute} from '../api.js'
 
 
 
@@ -17,6 +17,13 @@ import {apiRoute, checkSession} from '../api.js'
 export default function Home(){
   const [posts, setPosts] = useState([])
   const history = useHistory();
+  const [myProfile, setMyProfile] = useState({})
+    
+  useEffect(async () => {
+   
+    const profile = await fetchProfile(checkSession());
+    if(profile)setMyProfile(profile)
+  }, [])
 
 
 
@@ -25,7 +32,8 @@ export default function Home(){
       const response = await fetch(apiRoute + '/posts');
       const data = await response.json()
       setPosts(data.posts)
-      console.log(data.posts)
+    //console.log(data.posts)
+    
       
       
     } catch (err) {
@@ -37,6 +45,7 @@ export default function Home(){
      
   
       fetchPosts();
+      console.log(posts)
     }, [])
 
 
@@ -61,14 +70,14 @@ export default function Home(){
         
       <div className="home--container">
             
-        <Header />
+      <Header src={`${imageRoute}/${myProfile.image}`} />
 
                 <main className='main'>
                       <Newpost  token ={checkSession()} refresh={fetchPosts}/>
                      
                     <div className="all-posts">     
                           
-                        {posts.map((post, index)=> <Post key={index} story={post.content} typeOfStory={post.type}/>  ).reverse()}
+                        {posts.map((post, index)=> <Post key={index} story={post.content} typeOfStory={post.type} authorinfo={post.author} postId={post.id}/>  ).reverse()}
                                      
                                     
                             

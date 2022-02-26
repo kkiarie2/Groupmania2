@@ -1,8 +1,8 @@
 import '../Styles/css/signup.css'
-import {Link, useHistory } from 'react-router-dom';
-
+import {Link, useHistory, Redirect } from 'react-router-dom';
 import React, { useState, useEffect }  from "react";
 import {useForm}from "react-hook-form"
+import { checkSession } from '../api';
 
 
 
@@ -87,7 +87,7 @@ const history = useHistory();
             
  }
 
-
+ if(!checkSession()){
 
 
     return (
@@ -176,6 +176,8 @@ const history = useHistory();
 
 
 
-    )
+    )} else{
+        return <Redirect from="/signup" to="/home" />
+    }
 
 }

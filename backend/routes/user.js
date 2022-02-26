@@ -20,7 +20,7 @@ router.post('/login', async(req, res)=> {
 });
 
 
-router.get('/deleteaccount', async(req, res) => {
+router.get('/deleteaccount', auth, async(req, res) => {
     const account = await userCtrl.deleteAccount(req.userId)
     res.json(account)
 })

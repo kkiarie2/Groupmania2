@@ -27,3 +27,7 @@
 .btn--delete--pfl{
     @include button-bg($color-delete-btn); 
 }
+
+.Profile--info-tags{
+    font-weight: 700;
+}
