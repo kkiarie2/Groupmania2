@@ -29,7 +29,14 @@ export default function Home(){
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch(apiRoute + '/posts');
+    //  const response = await fetch(apiRoute + '/posts');
+      const response = await fetch(apiRoute + '/posts/', {
+        method: "GET", 
+        headers:{
+        'Accept': '*/*',
+        'Authorization': `Bearer ${checkSession()}`, 
+        }
+      });
       const data = await response.json()
       setPosts(data.posts)
     //console.log(data.posts)
@@ -77,7 +84,7 @@ export default function Home(){
                      
                     <div className="all-posts">     
                           
-                        {posts.map((post, index)=> <Post key={index} story={post.content} typeOfStory={post.type} authorinfo={post.author} postId={post.id}/>  ).reverse()}
+                        {posts.map((post, index)=> <Post key={index} story={post.content} typeOfStory={post.type} authorinfo={post.author} postId={post.id} isAuthor={post.isAuthor || false} authorName={author.name}/>  ).reverse()}
                                      
                                     
                             

@@ -122,5 +122,25 @@ async function getAllPosts(currentUserId){
 
 
 
+async function deletePost( postId, userId){
+  try{
+    if(!postId) return {status:'failed', message:'post does not exist'} 
+    const existingPost = await PostModel.findOne({where:{id:postId, userId}})
+    if(!existingPost){
+      return {status:'failed', message:'Post does not exist'} 
+    } else{
+        const res = await existingPost.destroy()
+        return { status: "successful", res}
+    }
 
-module.exports={addPost, getPostsByUserId, getAllPosts, editPost, getPostByPostId}
+  } catch(err){
+    ////console.log({err})
+    return {status:'failed', message:'unexpected error occurred'}
+
+  }
+}
+
+
+
+
+module.exports={addPost, getPostsByUserId, getAllPosts, editPost, getPostByPostId, deletePost}

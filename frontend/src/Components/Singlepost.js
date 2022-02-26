@@ -24,7 +24,7 @@ useEffect(async() => {
 if(checkSession()){
 
 
-return (<>{post && <Post story={post.content} typeOfStory={post.type} authorinfo={post.author} />}    </>)
+return (<>{post && <Post story={post.content} typeOfStory={post.type} authorinfo={post.author}  isAuthor={post.isAuthor || false} />}    </>)
 
 } else{
         return <Redirect from="/post" to="/login" />

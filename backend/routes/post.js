@@ -53,9 +53,9 @@ router.post('/editpost', [auth, multer], async(req, res)=>{
 })
 
 //get all posts by a user for profile page
-router.get("/profile/:userId", async (req, res) => {
+router.get("/profile/:userId", auth, async (req, res) => {
     try{
-        const posts = await postCtrl.getPostsByUserId(req.params.userId)
+        const posts = await postCtrl.getPostsByUserId(req.params.userId, req.userId)
         res.status(200).json(posts)
     } catch(err){
         res.status(500).json(err);
@@ -63,9 +63,9 @@ router.get("/profile/:userId", async (req, res) => {
 })
 
 //get one post
-router.get("/:postId", async (req, res) => {
+router.get("/:postId", auth, async (req, res) => {
     try{
-        const post = await postCtrl.getPostByPostId(req.params.postId)
+        const post = await postCtrl.getPostByPostId(req.params.postId, req.userId)
         res.status(200).json(post)
     } catch(err){
         res.status(500).json(err);
@@ -74,27 +74,25 @@ router.get("/:postId", async (req, res) => {
 
 
 //all posts
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
     try{
-        const posts = await postCtrl.getAllPosts()
+        const posts = await postCtrl.getAllPosts(req.userId)
         res.status(200).json(posts)
     } catch(err){
         res.status(500).json(err);
     }
 })
 
+//delete post
+router.get("/delete/:postId", auth, async (req, res) =>{
+    try{ 
+        const post = await postCtrl.deletePost(req.params.postId, req.userId)
+        res.json(post)
 
+    }catch(err){
+        res.status(500).json(err);
+    }
+}) 
 
-
-/*
-
-router.get('/', productCtrl.getAllPosts);
-router.post('/', auth, multer, productCtrl.addPost);
-router.post('/:id/like', auth, productCtrl.likePosts);
-router.get('/:id', auth, productCtrl.getOnePost);
-router.put('/:id', auth, multer, productCtrl.modifyPost);
-router.delete('/:id', auth, productCtrl.deletePost);
-
-*/
 
 module.exports = router;

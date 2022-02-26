@@ -1,19 +1,21 @@
 import '../Styles/css/Post.css'
 import React, {useState} from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useHistory } from 'react-router-dom'
 import { AiFillLike, AiOutlineComment, AiOutlineLogout } from 'react-icons/ai';
 import {format} from 'timeago.js'
-import {imageRoute} from '../api.js'
+import {imageRoute, deletePost, checkSession} from '../api.js'
 
 
 const Image = ({imageUrl, className}) => {
     return( <img className={className} src={`${imageRoute}/${imageUrl}`}/>)
 }
 
-const Post = ({story, typeOfStory, authorinfo, postId}) => {
+const Post = ({story, typeOfStory, authorinfo, postId, isAuthor}) => {
   const [like, setLike] = useState(0)
   const [isLiked, setIsLiked] = useState(false)
   const [color, setColor] = useState()
+  const history = useHistory()
+
   //console.log(authorinfo)
 const user = (userId) => {
     
@@ -31,6 +33,13 @@ const user = (userId) => {
   const paragraph= (text) =>{
       return(<p className='post--paragraph'>{text}</p>       )
   }
+
+  const handleDelete = async ()=> {
+    const deleted = await deletePost(checkSession(), postId)
+   // history.push("/home");
+   history.go(0)
+  }
+
  
     return (
                <> 
@@ -72,17 +81,24 @@ const user = (userId) => {
                                         <AiOutlineComment className='icons--comments '/>
                                         <div className='icons--comments--count numbers'>50</div>
                                     </div>
-                                    <div className='edit--div '>
+                                    { isAuthor && (<>
+                                        <div className='edit--div '>
                                         <Link to="/editpost">
                                             <button className='button--edit edit--post' type='button'
-                                            >Edit</button>
+                                            >Edit</button> 
                                         </Link>    
                                     </div>
+                                    
                                     <div className='delete--div '>
-                                        <button className='button-delete delete--post' >Delete</button>
+                                        <button className='button-delete delete--post' onClick={()=> handleDelete()}>Delete</button>
 
-                                      { /* onClick={handleDelete} */}
+                                
                                     </div>
+                                    </>)
+                                        
+                                    }
+                                    
+                                    
                                     
                                 
                             </div>

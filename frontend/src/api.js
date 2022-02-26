@@ -67,11 +67,35 @@ const fetchProfile = async (token) => {
 
 
 
+ const deletePost = async (token, postId) => {
+  // console.log(token)
+   try {
+     const response = await fetch(apiRoute + '/posts/delete/' + postId, {
+       method: "GET", 
+       headers:{
+       'Accept': '*/*',
+       'Authorization': `Bearer ${token}`, 
+       }
+     });
+     const data = await response.json()
+          return true
+    
+     //console.log(data.user)
+     
+   } catch (err) {
+                  console.log(err); 
+          return (false)
+   }
+ }
+ 
 
 
 
 
-export {apiRoute, imageRoute, checkSession, fetchProfile, fetchPost};
+
+
+
+export {apiRoute, imageRoute, checkSession, fetchProfile, fetchPost, deletePost};
 
 
 
