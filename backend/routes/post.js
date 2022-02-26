@@ -16,7 +16,7 @@ router.post('/addpost', [auth, multer], async(req, res)=> {
     const post = await postCtrl.addPost({
         userId: req.userId,
         post: req.body.post, 
-        image: req.file.filename
+        image: req.file?.filename
         
         
     } )
@@ -48,9 +48,7 @@ router.post('/editpost', [auth, multer], async(req, res)=>{
         res.status(500).json(err);
 
    }
-   
-   
-   
+  
    
 })
 

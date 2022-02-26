@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const {getUser} = require('../controllers/user')
 
-module.exports = (req, res, next) => {
+module.exports = async (req, res, next) => {
 //console.log({body:req.body, headers:req.headers})
   try {
     const token = req.headers.authorization.split(' ')[1];
@@ -16,9 +16,10 @@ module.exports = (req, res, next) => {
     } else {
       const payload = decodedToken.payload;
       const userId = payload.userId;
-      const user = getUser(userId)
+      const user = await getUser(userId)
+      console.log({user})
       if(user.status === "successful"){
-        console.log({user})
+        
         req.userId = userId
         next();
       } else{

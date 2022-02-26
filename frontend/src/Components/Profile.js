@@ -1,21 +1,59 @@
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import '../Styles/css/Profile.css'
 import Header from './Header'
+import {checkSession, imageRoute, apiRoute} from '../api'
 
-
+ 
 export default function Profile(){
-    return(
-        < div className='profile--container'>
+    const [myProfile, setMyProfile] = useState({})
+    
+    
+    const fetchProfile = async (token) => {
+        console.log(token)
+        try {
+          const response = await fetch(apiRoute + '/auth/myprofile', {
+            method: "GET", 
+            headers:{
+            'Accept': '*/*',
+            'Authorization': `Bearer ${token}`, 
+            }
+          });
+          const data = await response.json()
+          setMyProfile(data.user)
+          console.log(data.user)
+          
+          
+        } catch (err) {
+                       console.log(err);     
+        }
+      }
+    
+        useEffect(() => {
+         
+        
+          fetchProfile(checkSession());
+        }, [])
+
+
+
+    
+    if (checkSession()){  
+    
+    return( 
+        <div className='profile--container'>
             <Header />
             <div className="profile--imgdiv">
-                        
-            <img className="profile--image" src= 'picture.png'/>
+            <div className="profile--dept"><img className="profile--image" src={`${imageRoute}/${myProfile.image}`}/></div>          
+            
         
 
             </div>
             <div className="profile--info">
-                <p className="profile--name">Bitcoin buddy</p>
-                <p className="profile--dept">IT Depart</p>
+                <p className="profile--name">{myProfile.firstname}</p>
+                <p className="profile--dept">{myProfile.birthDay}</p>
+                <p className="profile--dept">{myProfile.hobbies}</p>
+                
             
             
             </div>
@@ -34,6 +72,8 @@ export default function Profile(){
         
         </div>
 
-    )
+    )} else{
+        return <Redirect from="/home" to="/login" />
+     }
 }
 

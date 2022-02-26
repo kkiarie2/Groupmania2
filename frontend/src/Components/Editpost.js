@@ -1,4 +1,4 @@
-import React from 'react'
+import {React, useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 
     
@@ -11,8 +11,21 @@ import { Link } from 'react-router-dom'
 export default function Editpost() {
 
 
- /* 
+    
 
+
+    function handleEdit(e){
+        e.preventDefault();
+        const editFormData = new FormData(e.target)
+        const content = Object.fromEntries(editFormData.entries);
+        
+            
+            
+          
+
+
+
+    }
 
                   return (
                         
@@ -22,21 +35,18 @@ export default function Editpost() {
                                                 <label className='text--input--label'>        
                                                     <textarea 
                                                         className='textarea'
-                                                        name='postText'
-                                                        value={editText}
-                                                        onChange={(e) => setEditText(e.target.value)}
-                                                    ></textarea>
+                                                        name='post'
+                                                        ></textarea>
                                                       your post 
                                                 </label>  
             
                                                 
                                                 <label className='image--input--label'>
                                                       <input type="file" 
-                                                          name="file" 
+                                                          name="image" 
                                                           className='image--input' 
-                                                          value={editImg} 
-                                                          onChange={(e) => setEditImg(e.target.value)}
-                                                      />
+                                                          
+                                                     />
                                                         Add Image
                                                 </label>                  
             
@@ -51,7 +61,7 @@ export default function Editpost() {
       )
 
       
-*/
+
     }
     
     

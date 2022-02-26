@@ -43,11 +43,11 @@ async function deleteAccount( userId){
 
 async function getUser (userId){
   try{
-    const user = await UserModel.findOne({id:userId}, {attributes:{include:["id", "email"]}})
-    if(user) return { status: "successful", user};
+    const profile = await UserModel.findOne({where: {id:userId}}, {attributes:{include:["id", "birthday", "image", "firstname", "lastname", "hobbies", "email"]}})
+    if(profile) {
+      delete profile.dataValues.password
+      return  { status: "successful", user:{...profile.dataValues}};}
     return {status:'failed', message:'user does not exist'} 
-      
-
   }catch(err){
     return {status:'failed', message:'unexpected error occurred'}
   }
@@ -60,7 +60,7 @@ async function getUser (userId){
 async function login(email, password){
   try{const result = await UserModel.findOne(
     {
-      email: email
+     where: { email: email}
   })
   if(result === null){
     return ({status: 'failed', message:'you dont have an account; sign up in instead'})
@@ -92,13 +92,38 @@ async function login(email, password){
 }
 
 
+//edit profile
+async function editUser(userId, newProfile){
+  try{
+      const existingUser = await UserModel.findOne({where: {id:userId}})
+      if(! existingUser ){
+        return {status:'failed', message:'you are not allowed to edit this profile'} 
+      } else{
+        
+        const res = await existingUser.update(newProfile)
+        console.log(Object.keys(res))
+        delete res.dataValues.password
+        return {status:"successful", res}
+      }
+
+  } catch(err){
+    console.log({err})
+    return {status:'failed', message:'unexpected error occurred'} 
+  }
+
+}
 
 
 
 
 
 
-module.exports ={signup, login, deleteAccount, getUser}
+
+
+
+
+
+module.exports ={signup, login, deleteAccount, getUser, editUser}
 
 
 

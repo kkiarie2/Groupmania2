@@ -1,16 +1,24 @@
 import '../Styles/css/Post.css'
-import {React, useState} from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import { AiFillLike, AiOutlineComment, AiOutlineLogout } from 'react-icons/ai';
 import {format} from 'timeago.js'
+import {imageRoute} from '../api.js'
 
 
 
 
- const Post = ({Post}) => {
+const Post = ({story, typeOfStory}) => {
   const [like, setLike] = useState(0)
   const [isLiked, setIsLiked] = useState(false)
   const [color, setColor] = useState()
+
+
+
+
+
+
+
 
 
   const handleLike =() =>{
@@ -20,6 +28,13 @@ import {format} from 'timeago.js'
   }
   const styles = {
     color:  isLiked ? "#1D9BF0" : "black"
+  }
+
+  const paragraph= (text) =>{
+      return(<p>{text}</p>       )
+  }
+  const image = (imageUrl) => {
+      return( <img src={`${imageRoute}/${imageUrl}`}/>)
   }
     return (
                <> 
@@ -40,18 +55,15 @@ import {format} from 'timeago.js'
                                 
                                 
                                 <p> 
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the 
-                                    1500s, 
-                                    {/*  
                                     
-                                        {{(post.text).length <= 25? post.text : `${(post.text).slice(0, 25)}...`}
+                                        {/*(story).length <= 25 ? story : `${(story).slice(0, 25)}...`*/}
                                     
-                                    
-                                    
-                                    */}
                                 
                                 </p>
+
+                                {typeOfStory === 'post' ? paragraph(story[0]) : null }
+                                {typeOfStory === 'image' ? image(story[0]) : null }
+                                {typeOfStory === 'article' ? <React.Fragment ><div>{paragraph(story[0])} </div><div>{image(story[1])}</div></React.Fragment> : null }
                     
                                         
                             

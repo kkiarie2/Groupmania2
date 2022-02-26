@@ -26,26 +26,11 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [postText, setPostText] = useState('');
   const [postImg, setPostImg] = useState('');
-  const [editText, setEditText] = useState('');
-  const [editImg, setEditImg] = useState('');
   const history = useHistory();
 
 
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch(apiRoute + '/posts');
-        const data = await response.json()
-        setPosts(data);
-        
-      } catch (err) {
-                     console.log(err);     
-      }
-    }
-
-    fetchPosts();
-  }, [])
+  
 
 
  
@@ -90,7 +75,7 @@ return (
                       
        <Router>
               <Switch>                     
-                     <Route path="/signup"> <Signup /></Route>
+                      <Route path="/signup"> <Signup /></Route>
                       <Route path="/home"> <Home /> </Route>
                       <Route path="/login" > <Login /></Route>
                       <Route path="/profile" > <Profile /></Route>

@@ -1,5 +1,5 @@
 import '../Styles/css/home.css'
-import React, { useEffect } from 'react';
+import {React, useEffect, useState } from 'react';
 import { useHistory, Redirect, Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -8,37 +8,55 @@ import Post from './Post'
 import Newpost from './Newpost'
 import { AiFillLike, AiOutlineComment, AiOutlineLogout } from 'react-icons/ai';
 import newPost from './Newpost';
+import {apiRoute, checkSession} from '../api.js'
+
 
 
 
 
 export default function Home(){
-/*    const history = useHistory();
+  const [posts, setPosts] = useState([])
+  const history = useHistory();
 
 
 
-    const checkSession=() => { 
-        var token = null
-      var allCookies = document.cookie.split(";")
-      allCookies.map((cookie)=>{
-        var c = cookie.split("=");
-        console.log(c)
-        if(c[0] === 'token'){
-          token = (c[1])
-        }
-    })
-    return token
-}
-       
+  const fetchPosts = async () => {
+    try {
+      const response = await fetch(apiRoute + '/posts');
+      const data = await response.json()
+      setPosts(data.posts)
+      console.log(data.posts)
+      
+      
+    } catch (err) {
+                   console.log(err);     
+    }
+  }
+
+    useEffect(() => {
      
-    
-    
-    
-    
-    
-  if (checkSession()){  */
+  
+      fetchPosts();
+    }, [])
 
-   
+
+
+
+
+
+
+ 
+        
+    
+  if (checkSession()){  
+
+
+
+
+
+
+
+
     return(
         
       <div className="home--container">
@@ -46,21 +64,13 @@ export default function Home(){
         <Header />
 
                 <main className='main'>
-                      <Newpost />
+                      <Newpost  token ={checkSession()} refresh={fetchPosts}/>
                      
                     <div className="all-posts">     
-                    
-                            
-                                     <Post />
-                                     <Post />
-                                     <Post />
-                                     <Post />
-                                     <Post />
-                                
-                                
-                    
-                                        
-                            
+                          
+                        {posts.map((post, index)=> <Post key={index} story={post.content} typeOfStory={post.type}/>  ).reverse()}
+                                     
+                                    
                             
                 
                                            
@@ -77,10 +87,10 @@ export default function Home(){
         </div>
 
     )  
-//}
-  //  else{
-   //     return <Redirect from="/home" to="/login" />
-   // }
+}
+   else{
+       return <Redirect from="/home" to="/login" />
+    }
 }
 
 

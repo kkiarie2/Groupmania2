@@ -2,23 +2,64 @@
     import { React, useState} from 'react';
     import { Link } from 'react-router-dom';
     import {BiImageAdd} from "react-icons/bi"
-    
+    import { apiRoute } from "../api";  
+      
 
 
 
 
-    export default function newPost() {
+    export default function Newpost({token, refresh}) {
+      const [posts, setPosts] = useState([])
+      const [formData, setFormData] = useState({
+          post: "",
+          image: ""
+      })
 
 
 
+      
+      
 
-      const handleSubmit = async (e) => {
-        console.log(e.target)
-        e.preventDefault();
-        //const newPost = { id, datetime, body: postText };
+
+      const handleSubmit = async (event) => {
+        console.log({event})
+        event.preventDefault()
+        const formData = new FormData(event.target)
+        const content = Object.fromEntries(formData);
+        console.log({content})
+
+
+
         try {
-      //    const response = await api.post('http://localhost:4000/api/posts/addpost', newPost);
-      //    const allPosts = [...posts, response.data];
+          
+           async function postData(content) {
+             var url =apiRoute + '/posts/addpost'
+           var data = new FormData() 
+           data.append('post', content.post)
+           data.append('image', content.image)
+           const objectx = {
+              method: 'POST',
+              headers: {
+               // 'Content-Type': 'multipart/form-data',
+                'Accept': '*/*',
+                'Authorization': `Bearer ${token}`,                
+              },
+              body: (data)
+              
+            };
+
+
+
+
+           const response = await fetch(url, objectx)
+            return response.json(); 
+          }
+          
+          postData(content)
+            .then(data => {
+               refresh();
+              });
+
           
         } catch (err) {
           console.log(`Error: ${err.message}`);
@@ -31,27 +72,27 @@
           return (
                 
                    <section className='update'>
-                            <form className='update--form'  onSubmit={handleSubmit}>
+                            <form className='update--form' encType="multipart/form-data" onSubmit={handleSubmit}>
                                   <div className="inputs-wrap">
-                                      <label for="postinput" className='text--input--label'> </label>       
+                                      <label htmlFor="postinput" className='text--input--label'> </label>       
                                             <textarea 
                                                 className='textarea'
-                                                name='postText'
+                                                name='post'
                                                 placeholder="share"
                                                 rows="3"
                                                 id="postinput"
-                                              // value={postText}
-                                              //  onChange={(e) => setPostText(e.target.value)}
+                                               //value={formData.post}
+                                               //onChange={handleChange}
                                             />
                                               
                                         
 
                                         <label className='image--input--label'> <BiImageAdd />
                                               <input type="file" 
-                                                  name="file" 
+                                                  name="image" 
                                                   className='image--input' 
-                                                // value={postImg} 
-                                                //  onChange={(e) => setPostImg(e.target.value)}
+                                                 //value={formData.image} 
+                                               // onChange={handleChange}
                                               />
                                         </label> 
                                   </div>   

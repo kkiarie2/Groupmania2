@@ -21,8 +21,8 @@ const postSchema = ({
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement:true, allowNull: false },
   post: { type: DataTypes.STRING, allowNull: true },
   image: { type: DataTypes.STRING, allowNull: true },
-  likes: { type: DataTypes.JSON, allowNull: true },
-  comments:{type: DataTypes.JSON, allowNull:true }
+  like: { type: DataTypes.JSON, allowNull: true },
+  comment:{type: DataTypes.JSON, allowNull:true }
 });
 
 class LikeModel extends Model{
