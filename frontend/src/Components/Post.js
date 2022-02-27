@@ -10,13 +10,14 @@ const Image = ({imageUrl, className}) => {
     return( <img className={className} src={`${imageRoute}/${imageUrl}`}/>)
 }
 
-const Post = ({story, typeOfStory, authorinfo, postId, isAuthor}) => {
+const Post = ({story, typeOfStory, authorinfo, postId, isAuthor, timestamp}) => {
   const [like, setLike] = useState(0)
   const [isLiked, setIsLiked] = useState(false)
   const [color, setColor] = useState()
   const history = useHistory()
 
   //console.log(authorinfo)
+  //console.log(timestamp)
 const user = (userId) => {
     
 }
@@ -40,6 +41,8 @@ const user = (userId) => {
    history.go(0)
   }
 
+//console.log(story)
+
  
     return (
                <> 
@@ -47,12 +50,11 @@ const user = (userId) => {
              <div className='post--div'>
                     <div className='publisher-container'>
                             <div className='publisher--div'>
-                                {/*<img src='picture.png'  className='publisher--image'/> */}
                                 {<Image className='publisher--image' imageUrl={`${authorinfo.image}`}/>}
                             </div>
                             <div className='username--container'>
-                                <div className='username--div'><span className='username--span'><h4 className='name--h4'>my name</h4></span> </div>
-                                <div className='time--div'><span className='timestamp'>just now</span> </div>
+                                <div className='username--div'><span className='username--span'><h4 className='name--h4'>{authorinfo.lastname}</h4></span> </div>
+                                <div className='time--div'><span className='timestamp'>{format(timestamp)}</span> </div>
                             </div>
                     </div>
                     <div className='post-text-div'>

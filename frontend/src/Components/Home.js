@@ -39,7 +39,7 @@ export default function Home(){
       });
       const data = await response.json()
       setPosts(data.posts)
-    //console.log(data.posts)
+    console.log(data.posts)
     
       
       
@@ -52,7 +52,7 @@ export default function Home(){
      
   
       fetchPosts();
-      console.log(posts)
+      
     }, [])
 
 
@@ -84,7 +84,7 @@ export default function Home(){
                      
                     <div className="all-posts">     
                           
-                        {posts.map((post, index)=> <Post key={index} story={post.content} typeOfStory={post.type} authorinfo={post.author} postId={post.id} isAuthor={post.isAuthor || false} authorName={author.name}/>  ).reverse()}
+                        {posts.map((post, index)=> <Post key={index} story={post.content} timestamp={post.createdAt} typeOfStory={post.type}  postId={post.id} isAuthor={post.isAuthor || false} authorinfo={post.author}/>  ).reverse()}
                                      
                                     
                             
