@@ -1,5 +1,5 @@
-var apiRoute = 'http://localhost:4000/api';
-var imageRoute = 'http://localhost:4000/images';
+var apiRoute = 'https://socialapp224.herokuapp.com/api';
+var imageRoute = 'https://socialapp224.herokuapp.com/images';
 
 
 const checkSession=() => { 

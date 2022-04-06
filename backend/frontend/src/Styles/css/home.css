@@ -92,6 +92,7 @@
       -ms-flex-direction: row;
           flex-direction: row;
   border-bottom: 1px solid grey;
+  padding-top: 20px;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;

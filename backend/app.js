@@ -26,6 +26,11 @@ app.use((req, res, next) => {
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/posts', postRoutes);
 app.use('/api/auth', userRoutes);
+app.use(express.static(path.join(__dirname, "/socialapps224/build")));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/socialapps224/build', 'index.html'));
+});
 app.use((req, res, next) => {
   if(req.url.includes("/images/")){
     res.sendFile(path.join(__dirname, "images/picture.png"))

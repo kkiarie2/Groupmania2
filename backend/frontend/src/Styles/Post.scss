@@ -98,6 +98,29 @@
 
     }
 
+    .publisher--div{
+        display: flex;
+    }
+
+.username--container{
+
+    @include mobile{
+        width: 100px;
+        display: flex;
+    }
+    @include tablet{
+        width: 100px;
+        display: flex;
+    }
+
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+
+
+    
+}
+
 .username--div{
     display: flex;
     justify-content: flex-start; 
@@ -106,9 +129,13 @@
 
 .username--span{
     margin-left: 0 !important;
-    
-   
+  
 
+}
+
+.timestamp{
+    white-space: nowrap;
+    font-size: 15px;
 }
 h4{
     margin-block-start: 0;
@@ -201,8 +228,25 @@ h4{
 
 
 .publisher--image{
+   
+    @include mobile{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        background-color: white;
+    }
+
     
-    @include profileImages;
+    @include tablet{
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        background-color: white;
+    }
+
+    
 
 }
 

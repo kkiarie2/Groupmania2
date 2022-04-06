@@ -79,13 +79,28 @@ $breakpoints:(
 
 @mixin profileImages {
   
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: white;
+  
+  
+}
+
+@mixin profileImages-sm {
+  
   width: 50px;
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
-  background-color: #E5E5E5;
+  background-color: white;
   
   
+}
+
+@mixin boxshadow-anime{
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,-webkit-box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 
